@@ -6,7 +6,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "alpinejs": "^3.5.2",
+    "alpinejs": "^3.8.1",
     "choices.js": "^9.0.1",
     "formex": "file:../../../deps/formex",
     "phoenix": "file:../../../deps/phoenix",
