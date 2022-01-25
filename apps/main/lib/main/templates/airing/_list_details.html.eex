@@ -1,0 +1,14 @@
+<div class="relative my-12">
+  <div class="absolute inset-0 flex items-center" aria-hidden="true">
+    <div class="w-full border-t border-gray-300"></div>
+  </div>
+  <div class="relative flex justify-center">
+    <span class="px-2 bg-gray-50 text-sm font-semibold text-gray-600 uppercase">
+      <%= @title %>
+    </span>
+  </div>
+</div>
+
+<div class="space-y-4">
+    <%= render_many @collection, Main.AiringView, "_list_#{@size}_item.html", as: :item, conn: @conn %>
+</div>

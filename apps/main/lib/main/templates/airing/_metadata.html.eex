@@ -1,0 +1,10 @@
+<%= if @value.type == "metagraph" do %>
+<a href="https://metagraph.wiki/uid/<%= @value.value %>" target="_blank" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-100 text-indigo-800">
+    metagraph item
+</a>
+<% end %>
+<%= if @value.type == "imdb" do %>
+<a href="https://www.imdb.com/title/<%= @value.value %>" target="_blank" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">
+    imdb title
+</a>
+<% end %>

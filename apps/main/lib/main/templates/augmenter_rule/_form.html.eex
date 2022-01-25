@@ -1,0 +1,54 @@
+<%= form_for @changeset, @action, [multipart: true, id: "xmltv-form"], fn f -> %>
+  <fieldset class="xmltv-form">
+    <div class="xmltv-input">
+        <%= if @changeset.action do %>
+            <p class="xmltv-form-error">Oops, something went wrong! Please check the errors below.</p>
+        <% end %>
+    
+        <div class="xmltv-form-group">
+            <%= label f, :channel_id %>
+            <%= select(f, :channel_id, channel_list()) %>
+            <%= error_tag f, :channel_id %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :augmenter %>
+            <%= text_input f, :augmenter, placeholder: "Fixups etc" %>
+            <%= error_tag f, :augmenter %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :title %>
+            <%= text_input f, :title, placeholder: "Should start with ^" %>
+            <%= error_tag f, :title %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :title_language %>
+            <%= text_input f, :title_language, placeholder: "sv etc. Lowercase." %>
+            <%= error_tag f, :title_language %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :otherfield, "Other Field" %>
+            <%= text_input f, :otherfield, placeholder: "Other field to match via" %>
+            <%= error_tag f, :otherfield %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :othervalue, "Other value" %>
+            <%= text_input f, :othervalue, placeholder: "Other value to match via (regex via ^)" %>
+            <%= error_tag f, :othervalue %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :remoteref, "Remote ref." %>
+            <%= text_input f, :remoteref, placeholder: "Remote reference" %>
+            <%= error_tag f, :remoteref %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :matchby, "Match by" %>
+            <%= text_input f, :matchby, placeholder: "How to match by" %>
+            <%= error_tag f, :matchby %>
+        </div>
+    </div>
+  
+    <div class="xmltv-submit-form">
+      <%= submit "Submit", class: "xmltv-submit-button" %>
+    </div>
+  </fieldset>
+<% end %>

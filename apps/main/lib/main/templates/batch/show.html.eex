@@ -1,0 +1,36 @@
+<div class="container mx-auto">
+  <section id="torch-toolbar">
+    <div class="pb-4 pt-2">
+      <%= link "Back", to: Routes.batch_path(@conn, :index), class: "bg-indigo-600 rounded shadow text-white py-2 px-4" %>
+    </div>
+  </section>
+  <section>
+    <div class="bg-white rounded-lg shadow py-4">
+      <div class="px-4 pb-4">
+        <div class="flex flex-no-wrap justify-between items-center">
+          <h3 class="text-lg font-bold truncate"><%= @batch.name %></h3>
+        </div>
+      </div>
+      <fieldset class="xmltv-form">
+        <div class="xmltv-input">
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Status</label>
+            <div class="py-1 px-4 rounded w-2/3 status-<%= @batch.status %>"><%= @batch.status %></div>
+          </div>
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Earliest date</label>
+            <div class="bg-white py-1 px-4 rounded w-2/3"><%= @batch.earliestdate %></div>
+          </div>
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Latest date</label>
+            <div class="bg-white py-1 px-4 rounded w-2/3"><%= @batch.latestdate %></div>
+          </div>
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Message</label>
+            <code class="bg-white py-1 px-4 rounded w-2/3"><%= @batch.message %></code>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </section>
+</div>

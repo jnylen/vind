@@ -1,0 +1,17 @@
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+        <div class="px-4 py-4 sm:px-6">
+          <div class="flex-shrink-0 flex space-x-4 mb-4">
+              <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-100 text-pink-800">
+                <%= @item.type || "nil" %>
+              </p>
+              <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-emerald-100 text-emerald-800">
+                <%= @item.language || "nil" %>
+              </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-gray-900">
+              <%= @item.value || "nil" %>
+            </p>
+          </div>
+        </div>
+</div>

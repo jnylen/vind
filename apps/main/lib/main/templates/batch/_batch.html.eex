@@ -1,0 +1,36 @@
+<%
+    status_class = case @batch.status do
+        "ok" -> "bg-emerald-200 text-emerald-900"
+        "error" -> "bg-red-200 text-red-900"
+        _ -> "bg-gray-200 text-gray-900"
+    end
+
+ %>
+
+<div class="bg-white container rounded-lg mx-auto shadow-lg px-4 py-4 flex items-center mb-4">
+    <div class="w-2/4">
+        <%= link to: Routes.airing_path(@conn, :index, %{"search" => %{"batch_id" => @batch.id}}) do %>
+        <div class="items-center flex">
+            <h4 class="text-indigo-600 text-lg font-semibold"><%= @batch.name %></h4>
+            <span class="text-sm flex items-center py-1 px-3 rounded-lg leading-none ml-4 font-medium <%= status_class %>"><%= @batch.status || "unknown" %></span>
+        </div>
+        <% end  %>
+
+        <div class="flex pt-2">
+            <%= link to: Routes.channel_path(@conn, :show, @batch.channel), class: "bg-indigo-100 text-indigo-900 flex items-center py-1 px-3 rounded-lg leading-none" do %>
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                <span class="pl-1 text-sm"><%= try_to_get_channel_name(@batch.channel) %></span>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="flex flex-col pr-8 flex-1 text-indigo-900 text-sm">
+        <span class="font-medium">Earliest</span>
+        <span><%= @batch.earliestdate %></span>
+    </div>
+
+    <div class="flex flex-col pr-8 flex-1 text-indigo-900 text-sm">
+        <span class="font-medium">Latest</span>
+        <span><%= @batch.latestdate %></span>
+    </div>
+</div>

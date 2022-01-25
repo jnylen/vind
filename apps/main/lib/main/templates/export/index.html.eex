@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://xmltv.se/css/modern.css"/>
+    <style type="text/css">
+      .X {  text-align: center; background-color: #90EE90; }
+      .E {  text-align: center; background-color: #FF6347; }
+      td.today { background-color: #A0FFA0; }
+      th.today { background-color: #000; color: #FFF; }
+    </style>
+    <title>Channel status</title>
+    <!-- today: $today -->
+  </head>
+  <body>
+    <h1>Data status</h1>
+    <p><strong>Generated at <%= DateTime.utc_now() |> Timex.format!("{RFC1123}") %></strong></p>
+    <p>
+      Please remember, these files are for personal usage. Any usage from that will result in your whole ip range being banned.<br/>
+      Any support not for personal usage won't happen.
+    </p>
+    <p>
+      Channel IDs have the ".xmltv.se" at the end removed. So append each channel id with ".xmltv.se".
+    </p>
+    <ul>
+      <li>E means data is missing for that date</li>
+      <li>X means it has data for that date</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <%= for date <- @dates do %>
+            <!-- <%= date %> -->
+            <%= date |> to_column_header() |> raw() %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for {_, channel} <- @channels do %>
+          <tr>
+            <th scope='row'><%= channel.xmltv_id |> String.replace(".xmltv.se", "") %></th>
+            <%= for day <- @dates do %>
+              <%= Map.get(channel.days, day |> to_string()) |> to_column(day, channel.xmltv_id) |> raw() %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

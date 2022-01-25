@@ -1,0 +1,34 @@
+<div class="flex flex-col h-full">
+  <%= render Main.SharedView, "_subheader.html", title: "Channels", new_link: "/channel/new", search_form: render(Main.ChannelView, "_search_form.html", conn: @conn) %>
+
+  <%= form = form_for :channel, Routes.channel_path(@conn, :run_job), method: :get %>
+
+  <div class="flex-1 flex flex-col">
+    <div class="flex-1">
+      <%= if Enum.empty?(@channels) do %>
+        Empty
+      <% else %>
+        <div class="channels">
+            <div class="rounded-lg overflow-hidden inline-block w-3/4 mx-auto shadow">
+              <%= render_many @channels, Main.ChannelView, "_channel.html", as: :channel, conn: @conn %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= if @scrivener.total_entries > 0, do: pagination_links(@scrivener, search: Map.get(@conn.params, "search", %{})) %>
+
+    <div class="flex p-4 space-x-4 items-center justify-center">
+      <button name="job" type="submit" value="run_job" class="bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+        <span class="text-lg">Run job</span>
+      </button>
+      <button name="job" type="submit" value="force_update" class="bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/></svg>
+        <span class="text-lg">Force update</span>
+      </button>
+    </div>
+  </div>
+
+  </form>
+</div>

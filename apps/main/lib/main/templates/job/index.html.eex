@@ -1,0 +1,22 @@
+  <%= render Main.SharedView, "_subheader.html", title: "Jobs" %>
+
+  <table class="table">
+    <thead class="bg-indigo-900 text-white">
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for job <- @jobs do %>
+      <tr>
+        <td><%= job.type %></td>
+        <td><%= job.name %></td>
+        <td><%= job.starttime %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= if @jobs.total_entries > 0, do: pagination_links(@jobs, search: Map.get(@conn.params, "search", %{})) %>

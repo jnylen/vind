@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Available Channels</title>
+  </head>
+  <body>
+    <h1>Available Channels</h1>
+    <p>The following channels are available on XMLTV.se:</p>
+    <div id="channels">
+      <ul>
+        <%= for channel <- @channels do %>
+          <li><strong><%= List.first(channel.display_names).value %></strong> (<%= new_xmltv_id?(channel) %>)</li>
+        <% end %>
+      </ul>
+    </div>
+  </body>
+</html>

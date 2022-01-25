@@ -1,0 +1,82 @@
+<div class="bg-white shadow-md flex p-4 space-x-4 items-center">
+    <div class="flex space-x-4 flex-1 items-center">
+        <h1 class="font-semibold text-xl text-indigo-900"><%= @channel.display_names |> List.first() |> Map.get(:value) %></h1>
+        <%= if @channel.export do %>
+            <span class="bg-pink-600 text-pink-100 py-2 px-3 rounded-full">Export</span>
+        <% end %>
+        <%= if @channel.augment do %>
+            <span class="bg-orange-600 text-orange-100 py-2 px-3 rounded-full">Augment</span>
+        <% end %>
+    </div>
+
+    <%= link to: Routes.airing_path(@conn, :index, %{"search" => %{"channel_id" => @channel.id}}), class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <span class="text-lg"><%= @airings_count %> airings</span>
+    <% end  %>
+
+    <%= link to: Routes.file_path(@conn, :index, %{"search" => %{"channel_id" => @channel.id}}), class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <span class="text-lg"><%= @files_count %> files</span>
+    <% end  %>
+
+    <%= link to: Routes.batch_path(@conn, :index, %{"search" => %{"channel_id" => @channel.id}}), class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <span class="text-lg"><%= @batches_count %> batches</span>
+    <% end  %>
+
+    <%= link to: Routes.channel_path(@conn, :run_job, @channel, "force_update"), data: [confirm: "Are you sure?"], class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/></svg>
+        <span class="text-lg">Force update</span>
+    <% end  %>
+
+    <%= link to: Routes.channel_path(@conn, :run_job, @channel, "run_job"), class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+        <span class="text-lg">Run job</span>
+    <% end  %>
+
+    <%= link to: Routes.channel_path(@conn, :edit, @channel), class: "bg-indigo-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center" do %>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zm-2.207 2.207L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/></svg>
+        <span class="text-lg">Edit</span>
+    <% end  %>
+
+    <%= link to: Routes.channel_path(@conn, :delete, @channel), class: "bg-red-600 rounded shadow text-white py-2 px-4 inline-flex space-x-2 items-center", method: :delete, data: [confirm: "Are you sure?"] do %>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+        <span class="text-lg">Delete</span>
+    <% end  %>
+</div>
+
+<div class="container mx-auto mt-4">
+  <section>
+    <div class="bg-white rounded-lg shadow py-4">
+      <div class="px-4 pb-4">
+        <div class="flex flex-no-wrap justify-between items-center">
+          <h3 class="text-lg font-bold truncate"></h3>
+        </div>
+      </div>
+      <fieldset class="xmltv-form">
+        <div class="xmltv-input">
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Library</label>
+            <div class="py-1 px-4 rounded w-2/3"><%= @channel.library %></div>
+          </div>
+        </div>
+        <div class="xmltv-input">
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Grabber Info</label>
+            <div class="py-1 px-4 rounded w-2/3"><%= @channel.grabber_info %></div>
+          </div>
+        </div>
+
+        <div class="xmltv-input">
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">XMLTV ID</label>
+            <div class="py-1 px-4 rounded w-2/3"><%= @channel.xmltv_id %></div>
+          </div>
+        </div>
+        <div class="xmltv-input">
+          <div class="flex flex-no-wrap w-2/3 mb-2">
+            <label class="flex items-center justify-end text-gray-900 w-48 pr-3">Channel groups</label>
+            <div class="py-1 px-4 rounded w-2/3"><%= @channel.channel_groups |> Enum.join(", ") %></div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </section>
+</div>

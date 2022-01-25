@@ -1,0 +1,17 @@
+<%= formex_form_for @form, @action, [class: "w-full"], fn f -> %>
+    <div class="container flex mx-auto my-8">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Add a FTP Rule</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">Filter incoming files by FTP by rules.</p>
+        </div>
+        <div class="w-2/3 p-8 pt-4 bg-white rounded-md shadow-lg">
+            <%= formex_row f, :channels %>
+            <%= formex_row f, :directory %>
+            <%= formex_row f, :file_name %>
+            <%= formex_row f, :file_extension %>
+        </div>
+    </div>
+    <div class="container flex justify-end py-4 mx-auto my-10">
+        <%= formex_row f, :save %>
+    </div>
+<% end %>

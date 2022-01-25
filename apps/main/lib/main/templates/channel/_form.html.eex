@@ -1,0 +1,72 @@
+<%= formex_form_for @form, @action, [class: "w-full"], fn f -> %>
+    <div class="container flex mx-auto my-8 halfy">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Display names</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">The name of the channel</p>
+        </div>
+        <%= formex_collection f, :display_names, template: Main.Forms.TemplateHorizontal %>
+    </div>
+
+    <div class="container flex mx-auto my-8 halfy">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Configuration</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">The configuration of the specific importer library.</p>
+        </div>
+        <%= formex_collection f, :config_list, template: Main.Forms.TemplateHorizontal %>
+    </div>
+
+    <div class="container flex mx-auto my-8">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Downconverter</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">If this channel is a Downconverter then specify the settings here</p>
+        </div>
+        <div class="w-2/3">
+            <%= formex_collection f, :flags, template: Main.Forms.TemplateHorizontal %>
+
+            <div class="p-8 pt-4 bg-white rounded-md shadow-lg mt-4">
+                <%= formex_row f, :source_channel_id %>
+            </div>
+        </div>
+    </div>
+
+    <div class="container flex mx-auto my-8 halfy">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Combiner</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">If this channel is a Combiner then specify the settings here</p>
+        </div>
+        <%= formex_collection f, :sources, template: Main.Forms.TemplateHorizontal %>
+    </div>
+
+    <div class="container flex mx-auto my-8">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Max amount of data</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">Specify the amount of data the source provides</p>
+        </div>
+        <div class="w-2/3 p-8 pt-4 bg-white rounded-md shadow-lg mt-4">
+            <%= formex_nested f, :max_period %>
+        </div>
+    </div>
+
+    <div class="container flex mx-auto my-8">
+        <div class="w-3/5">
+            <h1 class="text-xl font-medium text-gray-700">Basic settings</h1>
+            <p class="w-2/3 pt-1 text-sm text-gray-600">Settings for the channel</p>
+        </div>
+        <div class="w-2/3 p-8 pt-4 bg-white rounded-md shadow-lg">
+            <%= formex_row f, :augment %>
+            <%= formex_row f, :export %>
+            <%= formex_row f, :schedule %>
+            <%= formex_row f, :xmltv_id %>
+            <%= formex_row f, :new_xmltv_id %>
+            <%= formex_row f, :library %>
+            <%= formex_row f, :grabber_info %>
+            <%= formex_row f, :default_prog_type %>
+            <%= formex_row f, :default_category %>
+            <%= formex_row f, :schedule_languages %>
+            <%= formex_row f, :url %>
+        </div>
+    </div>
+    <div class="container flex justify-end py-4 mx-auto my-10">
+        <%= formex_row f, :save %>
+    </div>
+<% end %>

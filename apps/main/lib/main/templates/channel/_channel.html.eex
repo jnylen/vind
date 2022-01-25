@@ -1,0 +1,25 @@
+<div class="bg-white container p-5 mx-auto flex items-center channel">
+    <input class="channel-check" name="ids[]" type="checkbox" value="<%= @channel.id %>">
+
+    <div class="ml-4 w-2/4">
+        <%= link to: Routes.channel_path(@conn, :show, @channel), class: "items-center flex" do %>
+            <h4 class="text-indigo-600 text-lg font-semibold"><%= ((@channel.display_names |> List.first()) || %{}) |> Map.get(:value) %></h4>
+            <span class="ml-2 bg-indigo-100 text-indigo-900 flex items-center py-1 px-3 rounded-lg leading-none text-sm"><%= @channel.xmltv_id %></span>
+        <% end %>
+    </div>
+
+    <span class="flex-1">
+        <span class="py-1 px-3 rounded-lg leading-none bg-indigo-100 text-sm text-indigo-900"><%= @channel.library %></span>
+        <span class="text-indigo-900 flex-1"><%= @channel.default_prog_type %></span>
+        <span class="text-indigo-900 flex-1"><%= @channel.default_category %></span>
+    </span>
+
+    <div class="flex">
+        <%= link to: Routes.channel_path(@conn, :edit, @channel), class: "text-gray-400 hover:text-gray-600" do %>
+            <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+        <% end %>
+        <%= link to: Routes.channel_path(@conn, :delete, @channel), method: :delete, data: [confirm: "Are you sure?"], class: "text-red-300 hover:text-red-600 ml-3" do %>
+            <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        <% end %>
+    </div>
+</div>

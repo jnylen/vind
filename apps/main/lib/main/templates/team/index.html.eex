@@ -1,0 +1,29 @@
+  <%= render Main.SharedView, "_subheader.html", title: "Translated teams", new_link: "/team/new" %>
+
+  <table class="table">
+    <thead class="bg-indigo-900 text-white">
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Original</th>
+        <th scope="col">Sports Type</th>
+        <th scope="col">Name</th>
+        <th scope="col">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for rule <- @rules do %>
+      <tr>
+        <td><%= rule.type %></td>
+        <td><%= rule.original %></td>
+        <td><%= rule.sports_type %></td>
+        <td><%= rule.name %></td>
+        <td class="flex justify-between">
+          <a class="font-bold" href="/team/edit/<%= rule.id %>">EDIT</a>
+          <a class="font-bold" href="/team/delete/<%= rule.id %>">DELETE</a>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= if @rules.total_entries > 0, do: pagination_links(@rules, search: Map.get(@conn.params, "search", %{})) %>

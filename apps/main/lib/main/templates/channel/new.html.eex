@@ -1,0 +1,7 @@
+<%= if @form.submitted? do %>
+  <div class="bg-red-200 text-red-900 py-4 flex justify-center text-sm space-x-2 mb-4">
+    <p class="font-medium">Oops, something went wrong!</p>
+    <p>Please take a look in the fields below.</p>
+  </div>
+<% end %>
+<%= render "_form.html", Map.put(assigns, :action, Routes.channel_path(@conn, :new)) %>

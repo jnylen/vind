@@ -1,0 +1,16 @@
+<div class="container mx-auto">
+  <section id="torch-toolbar">
+    <div class="pb-4 pt-2">
+      <%= link "Cancel", to: Routes.league_path(@conn, :index), class: "bg-indigo-600 rounded shadow text-white py-2 px-4" %>
+    </div>
+  </section>
+
+  <section>
+    <div class="bg-white rounded-lg shadow py-4">
+      <div class="text-lg font-bold px-4 pb-4">
+        <h3>Edit league</h3>
+      </div>
+      <%= render "_form.html", Map.put(assigns, :action, Routes.league_path(@conn, :edit, @rule)) %>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,93 @@
+  <div class="hidden lg:flex lg:flex-shrink-0">
+    <div class="flex flex-col w-64 border-r border-gray-200 pt-5 pb-4 bg-gray-100">
+      <div class="flex items-center flex-shrink-0 px-6">
+        <h1 class="text-center text-gray-700 py-1 text-3xl font-black w-full">Vind</h1>
+      </div>
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="h-0 flex-1 flex flex-col overflow-y-auto">
+        <!-- Navigation -->
+        <nav class="px-3 mt-6">
+          <div class="space-y-1">
+            <%= active_link(@conn, to: "/", active: [{Main.PageController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Home
+            <% end %>
+
+            <%= active_link(@conn, to: "/airing", active: [{Main.AiringController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Airings
+            <% end %>
+
+            <%= active_link(@conn, to: "/batch", active: [{Main.BatchController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                Batches
+            <% end %>
+
+            <%= active_link(@conn, to: "/channel", active: [{Main.ChannelController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Channels
+            <% end %>
+
+            <%= active_link(@conn, to: "/file", active: [{Main.FileController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                Files
+            <% end %>
+
+            <%= active_link(@conn, to: "/job", active: [{Main.JobController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md") do %>
+                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Jobs
+            <% end %>
+          </div>
+          <div class="mt-8">
+            <!-- Secondary navigation -->
+            <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="teams-headline">
+              Rules
+            </h3>
+            <div class="mt-2 space-y-1" role="group" aria-labelledby="teams-headline">
+                <%= active_link(@conn, to: "/augmenter_rule", active: [{Main.AugmenterRuleController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Augmenter Rules</span>
+                <% end %>
+
+                <%= active_link(@conn, to: "/email_rule", active: [{Main.EmailRuleController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-red-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Email Rules</span>
+                <% end  %>
+
+                <%= active_link(@conn, to: "/ftp_rule", active: [{Main.FtpRuleController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-amber-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">FTP Rules</span>
+                <% end %>
+            </div>
+          </div>
+          <div class="mt-8">
+            <!-- Secondary navigation -->
+            <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="teams-headline">
+              Translations
+            </h3>
+            <div class="mt-2 space-y-1" role="group" aria-labelledby="teams-headline">
+                <%= active_link(@conn, to: "/category", active: [{Main.CategoryController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Categories</span>
+                <% end %>
+
+                <%= active_link(@conn, to: "/country", active: [{Main.CountryController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-red-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Countries</span>
+                <% end  %>
+
+                <%= active_link(@conn, to: "/league", active: [{Main.LeagueController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-amber-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Leagues</span>
+                <% end %>
+
+                <%= active_link(@conn, to: "/team", active: [{Main.TeamController, :any}], class_active: "bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md", class_inactive: "text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md") do %>
+                    <span class="w-2.5 h-2.5 mr-4 bg-pink-500 rounded-full" aria-hidden="true"></span>
+                    <span class="truncate">Teams</span>
+                <% end %>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>

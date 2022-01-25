@@ -1,0 +1,34 @@
+<%= form_for @changeset, @action, [multipart: true, id: "xmltv-form"], fn f -> %>
+  <fieldset class="xmltv-form">
+    <div class="xmltv-input">
+        <%= if @changeset.action do %>
+            <p class="xmltv-form-error">Oops, something went wrong! Please check the errors below.</p>
+        <% end %>
+
+        <div class="xmltv-form-group">
+            <%= label f, :type %>
+            <%= text_input f, :type, placeholder: "Type" %>
+            <%= error_tag f, :type %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :original %>
+            <%= text_input f, :original, placeholder: "Original string" %>
+            <%= error_tag f, :original %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :sports_type %>
+            <%= text_input f, :sports_type, placeholder: "Sports Type" %>
+            <%= error_tag f, :sports_type %>
+        </div>
+        <div class="xmltv-form-group">
+            <%= label f, :name %>
+            <%= text_input f, :name, placeholder: "Team Name" %>
+            <%= error_tag f, :name %>
+        </div>
+    </div>
+  
+    <div class="xmltv-submit-form">
+      <%= submit "Submit", class: "xmltv-submit-button" %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_for @conn, "/channel", [as: :search, class: "flex items-center space-x-4", method: :get], fn f -> %>
+    <div>
+        <%= text_input f, :q, placeholder: "Library", class: "form-input bg-gray-200 block focus:bg-white focus:border-gray-500" %>
+    </div>
+
+    <%= submit "Search", class: "flex items-center justify-center px-4 py-2 border border-transparent text-md leading-5 font-base rounded-md text-indigo-100 rounded-lg bg-indigo-700 shadow hover:bg-indigo-900 focus:outline-none focus:ring" %>
+<% end %>

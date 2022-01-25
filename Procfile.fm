@@ -1,0 +1,2 @@
+release: mix ecto.migrate
+web: _build/prod/rel/file_manager/bin/file_manager start

@@ -1,0 +1,20 @@
+
+<fieldset class="xmltv-form">
+  <div class="xmltv-input">
+    <%= if @changeset.action do %>
+      <p class="xmltv-form-error">Oops, something went wrong! Please check the errors below.</p>
+    <% end %>
+    <%= form_for @changeset, @action, [multipart: true, id: "file-dropzone", class: "dropzone"], fn f -> %>
+      <div class="xmltv-form-group">
+        <%= label f, :channel_id %>
+        <%= select(f, :channel_id, channel_list()) %>
+        <%= error_tag f, :channel_id %>
+      </div>
+      <div class="xmltv-form-group">
+        <%#= label f, :attachment %>
+        <%#= file_input f, :attachment, class: "form-control" %>
+        <%#= error_tag f, :attachment %>
+      </div>
+    <% end %>
+  </div>
+</fieldset>

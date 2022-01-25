@@ -1,0 +1,124 @@
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      Main Information
+    </h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+      The default information about the airing.
+    </p>
+  </div>
+  <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+    <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Created
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= @airing.inserted_at %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Updated
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= @airing.updated_at %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Start Time
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= @airing.start_time %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          End Time
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= @airing.end_time %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Channel
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= link to: Routes.channel_path(@conn, :show, @airing.channel) do %>
+            <%= render Main.AiringView, "_tag.html", value: @airing.channel.xmltv_id, color: "red" %>
+          <% end  %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Batch
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= link to: Routes.airing_path(@conn, :index, %{"search" => %{"batch_id" => @airing.batch.id}}) do %>
+            <%= render Main.AiringView, "_tag.html", value: @airing.batch.name, color: "red" %>
+          <% end  %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Season/Episode
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= if @airing.season, do: "Season #{@airing.season}" %>
+          <%= if @airing.episode, do: "Episode #{@airing.episode}" %>
+          <%= if @airing.of_episode, do: " of #{@airing.of_episode}" %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Qualifiers
+        </dt>
+        <dd class="mt-1 flex-shrink-0 flex space-x-4">
+          <%= render_many @airing.qualifiers, Main.AiringView, "_tag.html", as: :value, color: "red" %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Program Type
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= render Main.AiringView, "_tag.html", value: @airing.program_type, color: program_type_color(@airing.program_type) %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Categories
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= render_many @airing.category, Main.AiringView, "_tag.html", as: :value, color: "red" %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Production Date
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= @airing.production_date %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Production Countries
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900">
+          <%= render_many @airing.production_countries, Main.AiringView, "_tag.html", as: :value, color: "red" %>
+        </dd>
+      </div>
+      <div class="sm:col-span-1">
+        <dt class="text-sm font-medium text-gray-500">
+          Metadata
+        </dt>
+        <dd class="mt-1 flex-shrink-0 flex space-x-4">
+          <%= render_many @airing.metadata, Main.AiringView, "_metadata.html", as: :value %>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>

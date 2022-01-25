@@ -1,0 +1,11 @@
+<div class="flex flex-col h-full">
+  <%= render Main.SharedView, "_subheader.html", title: "Airing" %>
+
+  <div class="w-1/2 mx-auto py-4">
+    <%= render Main.AiringView, "_main_details.html", airing: @airing, conn: @conn %>
+    <%= render Main.AiringView, "_list_details.html", collection: @airing.titles, size: "small", title: "Titles", conn: @conn %>
+    <%= render Main.AiringView, "_list_details.html", collection: @airing.subtitles, size: "small", title: "Subtitles", conn: @conn %>
+    <%= render Main.AiringView, "_list_details.html", collection: @airing.descriptions, size: "large", title: "Descriptions", conn: @conn %>
+    <%= render Main.AiringView, "_list_details.html", collection: @airing.credits, size: "credit", title: "Credits", conn: @conn %>
+  </div>
+</div>
