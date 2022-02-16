@@ -1402,10 +1402,10 @@ chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-choices.js@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-10.0.0.tgz#6f00cdf09fb9d4f6f044f2b8d88edbfba4dc4ae2"
-  integrity sha512-I/p92v2Oqbgf/ugThrD2E5nVqtVv6QouiURC7izFr6Mqn5NNUX8VZO64Rur0gh4GWKovj32WcxONzgqJJr5vdA==
+choices.js@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-10.1.0.tgz#034a40b7aa82e2a38f19ff8fae5bbfa6047862f4"
+  integrity sha512-NtrFt7c7ZQEGmkWsAV+EHynJhADWoZ82JEfg1+vQ9MMKJD4Ax2rzYPxXe+Q64i0HgUgWG/XTN3gN2pB8UFFFlA==
   dependencies:
     deepmerge "^4.2.2"
     fuse.js "^6.5.3"
